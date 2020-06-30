@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="An image gallery showcasing the use of CSS Grid"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image galery</title>
+    <link rel="stylesheet" href="image-gallery.css" />
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="overlay-inner">
+        <button class="close">X Close</button>
+        <img alt="" />
+      </div>
+    </div>
+
+    <section class="gallery"></section>
+
+    <script>
+      const galery = document.querySelector(".gallery");
+      const overlay = document.querySelector(".overlay");
+      const overlayImage = overlay.querySelector("img");
+      const overlayClose = overlay.querySelector(".close");
+
+      function generateHTML([w, h]) {
+        return `
+            <div class="item h${w} v${h}">
+                <img src="img/${randomNumber(10)}.jpeg" alt="text">
+                <div class="item__overlay">
+                    <button>View --></button>
+                </div>
+            </div>
+          `;
+      }
+
+      function randomNumber(limit) {
+        return Math.floor(Math.random() * limit) + 1;
+      }
+
+      function handleClick(e) {
+        const src = e.currentTarget.querySelector("img").src;
+        overlayImage.src = src;
+        overlay.classList.add("open");
+      }
+
+      function open() {}
+
+      function close() {
+        overlay.classList.remove("open");
+      }
+
+      const digits = Array.from({ length: 50 }, () => [
+        randomNumber(4),
+        randomNumber(4),
+      ]).concat([
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+      ]);
+
+      const html = digits.map(generateHTML).join("");
+      galery.innerHTML = html;
+
+      const items = document.querySelectorAll(".item");
+
+      items.forEach((item) => item.addEventListener("click", handleClick));
+
+      overlayClose.addEventListener("click", close);
+    </script>
+  </body>
+</html>
