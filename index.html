@@ -14,7 +14,7 @@
     <div class="overlay">
       <div class="overlay-inner">
         <button class="close">X Close</button>
-        <img alt="" />
+        <img src="" alt="" />
       </div>
     </div>
 
@@ -29,7 +29,7 @@
       function generateHTML([w, h]) {
         return `
             <div class="item h${w} v${h}">
-                <img src="img/${randomNumber(10)}.jpg" alt="text">
+                <img src="img/${randomNumber(13)}.jpg" alt="text">
                 <div class="item__overlay">
                     <button>View --></button>
                 </div>
@@ -53,18 +53,10 @@
         overlay.classList.remove("open");
       }
 
-      const digits = Array.from({ length: 50 }, () => [
+      const digits = Array.from({ length: 10 }, () => [
         randomNumber(4),
         randomNumber(4),
       ]).concat([
-        [1, 1],
-        [1, 1],
-        [1, 1],
-        [1, 1],
-        [1, 1],
-        [1, 1],
-        [1, 1],
-        [1, 1],
         [1, 1],
         [1, 1],
         [1, 1],
